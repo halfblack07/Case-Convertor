@@ -72,7 +72,7 @@ export default function TextForm(props) {
         }
     }
 
-    const [text, setText] = useState('Enter Text Here');
+    const [text, setText] = useState('');
     return (
         <>
         <div className='container' style={{backgroundColor: props.mode==='dark'?'#171246':'white', color: props.mode==='dark'?'white':'black'}} >
@@ -83,18 +83,18 @@ export default function TextForm(props) {
                     color: props.mode==='dark'?'white':'#171246' }} 
                 id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
-            <button className='btn btn-primary mx-2' onClick={handleSentenceCase}>Sentence Case</button>
-            <button className='btn btn-primary mx-4' onClick={handleUpClick}>Upper Case</button>
-            <button className='btn btn-primary mx-2' onClick={handleLowClick}>Lower Case</button>
-            <button className='btn btn-primary mx-2' onClick={handleCapitalizedCase}>Capitalized Case</button>
-            <button className='btn btn-primary mx-2' onClick={handleTitleCase}>Title Case</button>
-            <button className='btn btn-success mx-2 my-5' onClick={handleDownload}>Download Text</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleSentenceCase}>Sentence Case</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Upper Case</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleLowClick}>Lower Case</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleCapitalizedCase}>Capitalized Case</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleTitleCase}>Title Case</button>
+            <button className='btn btn-success mx-2 my-1' onClick={handleDownload}>Download Text</button>
 
 
         </div>
         <div className='container' style={{color: props.mode==='dark'?'white':'black'}} >
             <h1>Your Text Summary</h1>
-            <h5>{text.split(" ").length} words, {text.length} characters </h5>
+            <h5>{text.split(" ").filter((element) => element.length !== 0).length} words, {text.length} characters</h5>
             <h5>{0.008 * text.split(" ").length} minutes to read </h5>
             <h2>Preview</h2>
             <p>{text.length>0?text:"Enter something to preview it here"}</p>
